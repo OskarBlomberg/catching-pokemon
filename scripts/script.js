@@ -46,8 +46,16 @@ function generatePokemons() {
         } else {
             pokemon.src = `./assets/pokemons/${randomPokemons}.png`;
         }
-        gameFieldRef.appendChild(pokemon)
+        gameFieldRef.appendChild(pokemon);
+        pokemonStartPosition(pokemon);
     }
+
+}
+
+function pokemonStartPosition(pokemon) {
+    pokemon.style.position = "absolute";
+    pokemon.style.left = `${oGameData.getLeftPosition()}px`
+    pokemon.style.top = `${oGameData.getTopPosition()}px`
 }
 
 function validateGender(){
