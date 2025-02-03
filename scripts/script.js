@@ -34,7 +34,20 @@ function startGame(){
 }
 
 function generatePokemons() {
+    for(let i = 0;i < totalPokemons; i++) {
+        const pokemon = document.createElement('img');
+        pokemon.classList.add('pokemons');
+        let randomPokemons = Math.floor(Math.random()*151) +1;
 
+        if(randomPokemons < 10) {
+            pokemon.src = `./assets/pokemons/00${randomPokemons}.png`;
+        } else if(randomPokemons < 100) {
+            pokemon.src = `./assets/pokemons/0${randomPokemons}.png`;
+        } else {
+            pokemon.src = `./assets/pokemons/${randomPokemons}.png`;
+        }
+        gameFieldRef.appendChild(pokemon)
+    }
 }
 
 function validateGender(){
