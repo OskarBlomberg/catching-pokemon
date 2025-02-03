@@ -8,7 +8,14 @@ const ageRef = document.querySelector('#age');
 const formRef = document.querySelector('#form');
 const errorMsg = document.querySelector('#errorMsg');
 const formWrapperRef = document.querySelector('#formWrapper');
+const gameFieldRef = document.getElementById('gameField');
+const audioRef = document.querySelector('audio');
+
 let choosenGender;
+let pokemons= [];
+let totalPokemons = 10;
+let caughtPokemons = 0;
+
 
 
 formRef.addEventListener('submit', (event) => {
@@ -20,6 +27,14 @@ formRef.addEventListener('submit', (event) => {
 
 function startGame(){
     formWrapperRef.classList.add('d-none');
+    gameFieldRef.classList.remove('d-none');
+    //audioRef.play();
+    generatePokemons();
+    oGameData.startTimeInMilliseconds();
+}
+
+function generatePokemons() {
+
 }
 
 function validateGender(){
@@ -61,3 +76,4 @@ function validateForm() {
     }
 
 }
+
