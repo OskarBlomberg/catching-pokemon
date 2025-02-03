@@ -4,21 +4,35 @@ const log = (msg) => console.log(msg);
 
 const nickRef = document.querySelector('#nick');
 const ageRef = document.querySelector('#age');
-const genderRef = document.querySelectorAll('input[name ="gender"]')
+// const genderRef = document.querySelectorAll('input[name ="gender"]')
 const formRef = document.querySelector('#form');
+const errorMsg = document.querySelector('#errorMsg');
+const formWrapperRef = document.querySelector('#formWrapper');
+let choosenGender;
 
-log(genderRef)
 
 formRef.addEventListener('submit', (event) => {
     event.preventDefault()
-
     if(validateForm()) {
-
+        startGame();
     } 
 })
 
-function validateForm() {
+function startGame(){
+    formWrapperRef.classList.add('d-none');
+}
 
+function validateGender(){
+    const genders = document.querySelectorAll('input[name ="gender"]');
+    for (const input of genders){
+        if(input.checked){
+            choosenGender = input.value
+        }
+    }
+}
+
+function validateForm() {
+    validateGender();
     try {
         if(nickRef.value.trim().length < 5 || nickRef.value.trim().length > 10 ) {
             throw {
@@ -30,19 +44,20 @@ function validateForm() {
                 message: 'You must be between 10 and 15 years old.',
                 nodeRef: ageRef
             }
-        } else if (!genderRef.checked) {
+        } else if (!choosenGender) {
            throw {
             message: 'Must select gender',
-            nodeRef: genderRef
            }
         }
-
+        errorMsg.textContent = '';
         return true;
 
     } catch (error) {
-        log(error.message);
-        // error.message;
-        error.nodeRef.foucs();
+        errorMsg.textContent = error.message;
+        errorMsg.style.color = 'red';
+        if(error.nodeREf){
+            error.nodeRef.focus();
+        }
     }
 
 }
