@@ -4,16 +4,16 @@ const log = (msg) => console.log(msg);
 
 const nickRef = document.querySelector('#nick');
 const ageRef = document.querySelector('#age');
-// const genderRef = document.querySelectorAll('input[name ="gender"]')
 const formRef = document.querySelector('#form');
 const errorMsg = document.querySelector('#errorMsg');
 const formWrapperRef = document.querySelector('#formWrapper');
 const gameFieldRef = document.getElementById('gameField');
 const audioRef = document.querySelector('audio');
+const highScoreRef = document.querySelector('#highScore');
+const highScoreListRef = document.querySelector('#highScoreList');
 
 let choosenGender;
 let totalPokemons = 10;
-let caughtPokemons = 0;
 
 formRef.addEventListener('submit', (event) => {
 	event.preventDefault();
@@ -86,11 +86,34 @@ function catchPokemon(pokemon, pokemonImg, ball) {
 	});
 }
 
+function endGame(){
+  oGameData.endTimeInMilliseconds();
+  const timeScore = oGameData.nmbrOfMilliseconds();
+  highScoreRef.classList.remove('d-none');
+	gameFieldRef.classList.add('d-none');
+  updateHighScore(timeScore);
+  //display highscore
+}
+
+function updateHighScore(timeScore){
+  let highScoreArray = JSON.parse(localStorage.getItem('highScoreArray')) || [];
+  highScoreArray.push({
+    name : oGameData.trainerName,
+    time : timeScore,
+  });
+  highScoreArray.sort((a, b) => a.time - b.time);
+  if(highScoreArray.length > 10){
+    highScoreArray.pop()
+  }
+  localStorage.setItem('highScoreArray', JSON.stringify(highScoreArray));
+}
+
 function validateGender() {
 	const genders = document.querySelectorAll('input[name ="gender"]');
 	for (const input of genders) {
 		if (input.checked) {
 			choosenGender = input.value;
+      oGameData.trainerGender = input.value;
 		}
 	}
 }
@@ -114,6 +137,8 @@ function validateForm() {
 			};
 		}
 		errorMsg.textContent = '';
+    oGameData.trainerName = nickRef.value;
+    oGameData.trainerAge = ageRef.value;
 		return true;
 	} catch (error) {
 		errorMsg.textContent = error.message;
