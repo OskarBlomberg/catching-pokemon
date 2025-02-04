@@ -15,7 +15,7 @@ const winMsgRef = document.getElementById('winMsg');
 const playAgainBtnRef = document.getElementById("playAgainBtn");
 
 let choosenGender;
-let totalPokemons = 2;
+let totalPokemons = 10;
 
 formRef.addEventListener('submit', (event) => {
 	event.preventDefault();
@@ -123,9 +123,19 @@ function displayHighScore(highScoreArray) {
     }
 }
 
+function clearList(list){
+    let child = list.lastElementChild;
+    while(child) {
+        list.removeChild(child)
+        child=list.lastElementChild;
+    }
+}
+
 playAgainBtnRef.addEventListener("click", () => {
     formWrapperRef.classList.remove("d-none");
     gameFieldRef.classList.add ("d-none");
+    clearList(highScoreListRef);
+    highScoreRef.classList.add("d-none");
 })
 
 function validateGender() {
