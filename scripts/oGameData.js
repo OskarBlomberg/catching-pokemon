@@ -31,7 +31,7 @@ const oGameData = {
 	},
 	// Metod som hämtar antalet millisekunder sedan 1 januari 1970 och placerar värdet i beginning attributet
 	startTimeInMilliseconds: function () {
-		this.beginning = Date.now();
+		this.startTime = Date.now();
 	},
 
 	// Metod som hämtar antalet millisekunder sedan 1 januari 1970 och placerar värdet i ending attributet
