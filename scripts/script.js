@@ -11,6 +11,8 @@ const gameFieldRef = document.getElementById('gameField');
 const audioRef = document.querySelector('audio');
 const highScoreRef = document.querySelector('#highScore');
 const highScoreListRef = document.querySelector('#highScoreList');
+const winMsgRef = document.getElementById('winMsg');
+const playAgainBtnRef = document.getElementById("playAgainBtn");
 
 let choosenGender;
 let totalPokemons = 10;
@@ -89,10 +91,13 @@ function catchPokemon(pokemon, pokemonImg, ball) {
 function endGame(){
   oGameData.endTimeInMilliseconds();
   const timeScore = oGameData.nmbrOfMilliseconds();
+  document.querySelectorAll(".pokemons").forEach(pokemon => pokemon.remove());
   highScoreRef.classList.remove('d-none');
-	gameFieldRef.classList.add('d-none');
-  updateHighScore(timeScore);
-  //display highscore
+  let highScoreArray = updateHighScore(timeScore);
+  displayHighScore(highScoreArray);
+  oGameData.init();
+  console.log(oGameData.nmbrOfCaughtPokemons);
+  console.log(oGameData.trainerName);
 }
 
 function updateHighScore(timeScore){
@@ -106,7 +111,32 @@ function updateHighScore(timeScore){
     highScoreArray.pop()
   }
   localStorage.setItem('highScoreArray', JSON.stringify(highScoreArray));
+  return highScoreArray;
 }
+
+function displayHighScore(highScoreArray) {
+    winMsgRef.textContent = `You are the best trainer ${oGameData.trainerName}!!!`
+    for(let i = 0; i < highScoreArray.length; i++){
+        const li = document.createElement("li");
+        li.textContent = `${i+1}: ${highScoreArray[i].name}: ${highScoreArray[i].time} ms`;
+        highScoreListRef.appendChild(li);
+    }
+}
+
+function clearList(list){
+    let child = list.lastElementChild;
+    while(child) {
+        list.removeChild(child)
+        child=list.lastElementChild;
+    }
+}
+
+playAgainBtnRef.addEventListener("click", () => {
+    formWrapperRef.classList.remove("d-none");
+    gameFieldRef.classList.add ("d-none");
+    clearList(highScoreListRef);
+    highScoreRef.classList.add("d-none");
+})
 
 function validateGender() {
 	const genders = document.querySelectorAll('input[name ="gender"]');

@@ -9,15 +9,15 @@ const oGameData = {
 	trainerGender: '',
 	// Metod som nollställer datan i oGameData
 	init: () => {
-		pokemonNumbers = [];
-		nmbrOfCaughtPokemons = 0;
-		startTime = 0;
-		endTime = 0;
-		timerId = null;
-		nmbrOfSeconds = 0;
-		trainerName = '';
-		trainerAge = 0;
-		trainerGender = '';
+		oGameData.pokemonNumbers = [];
+		oGameData.nmbrOfCaughtPokemons = 0;
+		oGameData.startTime = 0;
+		oGameData.endTime = 0;
+		oGameData.timerId = null;
+		oGameData.nmbrOfSeconds = 0;
+		oGameData.trainerName = '';
+		oGameData.trainerAge = 0;
+		oGameData.trainerGender = '';
 	},
 	// Metod som slumpar fram ett tal som förhåller sig mellan 0 och webbläsarens bredd minus bildens bredd
 	getLeftPosition: () => {
