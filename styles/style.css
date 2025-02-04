@@ -4,6 +4,10 @@
 	padding: 0;
 }
 
+:root {
+	--COLOR-RED: rgb(160, 1, 1);
+}
+
 /* Ser till så att bilderna får korrekt storlek och deras rörelse animeras */
 /* När ni sätter intervallen efter vilken pokemonen får sin nya position bör den intervallen överensstämma med tiden här. 3s. */
 img {
@@ -29,10 +33,45 @@ img {
 	width: 50%;
 }
 
-/* .catched {
-	background-image: url(/catching-pokemon/assets/ball.webp);
-	background-size: 300px; */
-/* } */
+.form-wrapper {
+	background-image: url('/catching-pokemon/assets/background.png');
+	background-size: cover;
+	display: flex;
+}
+
+.form {
+	background-color: rgba(250, 241, 215, 0.8);
+	padding: 40px;
+	border-radius: 5px;
+	border: 2px solid var(--COLOR-RED);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+h1,
+h3 {
+	margin: 5px;
+}
+
+button {
+	background-color: var(--COLOR-RED);
+	border: none;
+	width: 300px;
+	height: 30px;
+	border-radius: 5px;
+	color: antiquewhite;
+	font-weight: bold;
+}
+
+.input {
+	background-color: rgba(250, 241, 215, 0.8);
+	width: 300px;
+	height: 30px;
+	margin: 2px;
+	border: 1px solid rgb(117, 116, 115);
+	border-radius: 3px;
+}
 
 .d-none {
 	display: none;
