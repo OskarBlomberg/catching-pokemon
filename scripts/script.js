@@ -12,9 +12,10 @@ const audioRef = document.querySelector('audio');
 const highScoreRef = document.querySelector('#highScore');
 const highScoreListRef = document.querySelector('#highScoreList');
 const winMsgRef = document.getElementById('winMsg');
+const playAgainBtnRef = document.getElementById("playAgainBtn");
 
 let choosenGender;
-let totalPokemons = 10;
+let totalPokemons = 2;
 
 formRef.addEventListener('submit', (event) => {
 	event.preventDefault();
@@ -94,6 +95,9 @@ function endGame(){
   highScoreRef.classList.remove('d-none');
   let highScoreArray = updateHighScore(timeScore);
   displayHighScore(highScoreArray);
+  oGameData.init();
+  console.log(oGameData.nmbrOfCaughtPokemons);
+  console.log(oGameData.trainerName);
 }
 
 function updateHighScore(timeScore){
@@ -118,6 +122,11 @@ function displayHighScore(highScoreArray) {
         highScoreListRef.appendChild(li);
     }
 }
+
+playAgainBtnRef.addEventListener("click", () => {
+    formWrapperRef.classList.remove("d-none");
+    gameFieldRef.classList.add ("d-none");
+})
 
 function validateGender() {
 	const genders = document.querySelectorAll('input[name ="gender"]');
