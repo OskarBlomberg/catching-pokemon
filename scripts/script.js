@@ -176,7 +176,7 @@ function displayHighScore(highScoreArray) {
   winMsgRef.textContent = `You are the best trainer ${oGameData.trainerName}!!!`;
   for (let i = 0; i < highScoreArray.length; i++) {
     const li = document.createElement("li");
-    li.textContent = `${i + 1}: ${highScoreArray[i].name}: ${
+    li.textContent = ` ${highScoreArray[i].name}: ${
       highScoreArray[i].time
     } s`;
     highScoreListRef.appendChild(li);
