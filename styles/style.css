@@ -1,78 +1,86 @@
 * {
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 :root {
-	--COLOR-RED: rgb(160, 1, 1);
+  --COLOR-RED: rgb(160, 1, 1);
+  --COLOR-OFFWHITE: rgba(250, 241, 215, 0.8);
 }
 
 /* Ser till så att bilderna får korrekt storlek och deras rörelse animeras */
 /* När ni sätter intervallen efter vilken pokemonen får sin nya position bör den intervallen överensstämma med tiden här. 3s. */
+
+/* POKEMONS IN-GAME */
+
 img {
-	width: 300px;
-	/* transition: all 3s linear; */
+  width: 300px;
+  /* transition: all 3s linear; */
 }
 
 .pokemons {
-	transition: all 3s linear;
+  transition: all 3s linear;
 }
 
+/* FORM */
+
 .form-wrapper {
-	width: 100%;
-	height: 100vh;
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .form {
-	display: flex;
-	flex-direction: column;
-	width: 50%;
+  display: flex;
+  flex-direction: column;
+  width: 50%;
 }
 
 .form-wrapper {
-	background-image: url('/catching-pokemon/assets/background.png');
-	background-size: cover;
-	display: flex;
+  background-image: url("/assets/background.png");
+  background-size: cover;
+  display: flex;
 }
 
 .form {
-	background-color: rgba(250, 241, 215, 0.8);
-	padding: 40px;
-	border-radius: 5px;
-	border: 2px solid var(--COLOR-RED);
-	display: flex;
-	justify-content: center;
-	align-items: center;
+  background-color: var(--COLOR-OFFWHITE);
+  padding: 40px;
+  border-radius: 5px;
+  border: 2px solid var(--COLOR-RED);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form__input {
+  background-color: var(--COLOR-OFFWHITE);
+  width: 300px;
+  height: 30px;
+  margin: 2px;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid rgb(117, 116, 115);
+  border-radius: 3px;
 }
 
 h1,
-h3 {
-	margin: 5px;
+h2 {
+  margin: 5px;
 }
 
-button {
-	background-color: var(--COLOR-RED);
-	border: none;
-	width: 300px;
-	height: 30px;
-	border-radius: 5px;
-	color: antiquewhite;
-	font-weight: bold;
+.button {
+  background-color: var(--COLOR-RED);
+  border: none;
+  width: 300px;
+  height: 30px;
+  border-radius: 5px;
+  color: antiquewhite;
+  font-weight: bold;
 }
 
-.input {
-	background-color: rgba(250, 241, 215, 0.8);
-	width: 300px;
-	height: 30px;
-	margin: 2px;
-	border: 1px solid rgb(117, 116, 115);
-	border-radius: 3px;
-}
-
+/* HIDE ELEMENTS */
 .d-none {
-	display: none;
+  display: none;
 }
