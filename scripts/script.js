@@ -31,7 +31,7 @@ playAgainBtnRef.addEventListener("click", () => {
   gameFieldRef.classList.add("d-none");
   clearList(highScoreListRef);
   highScoreRef.classList.add("d-none");
-  formRef.reset()
+  formRef.reset();
 });
 
 // Form
@@ -177,9 +177,7 @@ function displayHighScore(highScoreArray) {
   winMsgRef.textContent = `You caught them all ${oGameData.trainerName}!!!`;
   for (let i = 0; i < highScoreArray.length; i++) {
     const li = document.createElement("li");
-    li.textContent = ` ${highScoreArray[i].name}: ${
-      highScoreArray[i].time
-    } s`;
+    li.textContent = ` ${highScoreArray[i].name}: ${highScoreArray[i].time} s`;
     highScoreListRef.appendChild(li);
   }
 }
