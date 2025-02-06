@@ -6,10 +6,14 @@
 
 :root {
   --COLOR-RED: rgb(160, 1, 1);
+  --COLOR-OFFWHITE: rgba(250, 241, 215, 0.8);
 }
 
 /* Ser till så att bilderna får korrekt storlek och deras rörelse animeras */
 /* När ni sätter intervallen efter vilken pokemonen får sin nya position bör den intervallen överensstämma med tiden här. 3s. */
+
+/* POKEMONS IN-GAME */
+
 img {
   width: 300px;
   /* transition: all 3s linear; */
@@ -18,6 +22,8 @@ img {
 .pokemons {
   transition: all 3s linear;
 }
+
+/* FORM */
 
 .form-wrapper {
   width: 100%;
@@ -40,7 +46,7 @@ img {
 }
 
 .form {
-  background-color: rgba(250, 241, 215, 0.8);
+  background-color: var(--COLOR-OFFWHITE);
   padding: 40px;
   border-radius: 5px;
   border: 2px solid var(--COLOR-RED);
@@ -49,12 +55,22 @@ img {
   align-items: center;
 }
 
+.form__input {
+  background-color: var(--COLOR-OFFWHITE);
+  width: 300px;
+  height: 30px;
+  margin: 2px;
+  padding: 0.2rem 0.4rem;
+  border: 1px solid rgb(117, 116, 115);
+  border-radius: 3px;
+}
+
 h1,
-h3 {
+h2 {
   margin: 5px;
 }
 
-button {
+.button {
   background-color: var(--COLOR-RED);
   border: none;
   width: 300px;
@@ -64,15 +80,7 @@ button {
   font-weight: bold;
 }
 
-.input {
-  background-color: rgba(250, 241, 215, 0.8);
-  width: 300px;
-  height: 30px;
-  margin: 2px;
-  border: 1px solid rgb(117, 116, 115);
-  border-radius: 3px;
-}
-
+/* HIDE ELEMENTS */
 .d-none {
   display: none;
 }
