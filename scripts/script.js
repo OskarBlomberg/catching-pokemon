@@ -31,6 +31,7 @@ playAgainBtnRef.addEventListener("click", () => {
   gameFieldRef.classList.add("d-none");
   clearList(highScoreListRef);
   highScoreRef.classList.add("d-none");
+  formRef.reset()
 });
 
 // Form
@@ -82,7 +83,7 @@ function startGame() {
   formWrapperRef.classList.add("d-none");
   gameFieldRef.classList.remove("d-none");
   audioRef.load();
-//   audioRef.play();
+  audioRef.play();
   generatePokemons();
   setInterval(movePokemons, 3000);
   oGameData.startTimeInMilliseconds();
@@ -173,7 +174,7 @@ function updateHighScore(timeScore) {
 }
 
 function displayHighScore(highScoreArray) {
-  winMsgRef.textContent = `You are the best trainer ${oGameData.trainerName}!!!`;
+  winMsgRef.textContent = `You caught them all ${oGameData.trainerName}!!!`;
   for (let i = 0; i < highScoreArray.length; i++) {
     const li = document.createElement("li");
     li.textContent = ` ${highScoreArray[i].name}: ${
