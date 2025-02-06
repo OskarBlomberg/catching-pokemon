@@ -82,7 +82,7 @@ function startGame() {
   formWrapperRef.classList.add("d-none");
   gameFieldRef.classList.remove("d-none");
   audioRef.load();
-  audioRef.play();
+//   audioRef.play();
   generatePokemons();
   setInterval(movePokemons, 3000);
   oGameData.startTimeInMilliseconds();
